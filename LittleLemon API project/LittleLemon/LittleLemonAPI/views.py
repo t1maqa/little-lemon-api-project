@@ -37,7 +37,8 @@ class MenuItemsView(generics.ListCreateAPIView):
         elif self.request.method =='POST':
             # Only Manager is able to add new menu item to menu
             return [IsManager()]
-
+        else:
+            return [IsAuthenticated()]
 
 # Anyone can retrieve single menu item, only manager can put, patch, delete single menu item
 class SingleMenuItemView(generics.RetrieveUpdateDestroyAPIView):
